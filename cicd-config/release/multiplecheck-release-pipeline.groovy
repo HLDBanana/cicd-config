@@ -7,11 +7,11 @@
 properties([
         parameters([
                 choice(
-                        choices: ['release'],
+                        choices: ['master'],
                         description: '流水线类型',
                         name: 'PP_TYPE'
                 ),
-                text(defaultValue: 'http://192.168.101.94:8081/Data-Middleground-Develop-Area/product-code/service/dataMiddle-multipleCheck-release.git',
+                text(defaultValue: 'https://github.com/HLDBanana/eureka_server.git',
                         description: '必填，执行部署的项目源代码仓库地址',
                         name: 'PJ_URL'
                 ),
@@ -21,14 +21,14 @@ properties([
                         name: 'PJ_BRANCH'
                 ),
                 credentials(
-                        defaultValue: 'hld_git_cert',
+                        defaultValue: 'hld_harbor',
                         description: '必填，登录项目仓库使用的凭据ID，在持续交付中心凭据管理页面创建',
                         name: 'PJ_KEY',
                         required: true,
                         credentialType: 'com.cloudbees.plugins.credentials.common.StandardCredentials'
                 ),
                 choice(
-                        choices: ['tag:guohai-dev'],
+                        choices: ['tag:kubernetes'],
                         description: '必填，应用部署的K8S集群名称，格式要求【名称:tag】，tag要与对应集群的持续交付中心slave端tag一致',
                         name: 'K8S_API_SERVER'
                 ),
